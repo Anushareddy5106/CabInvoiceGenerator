@@ -3,6 +3,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import cabinvoice.CabInvoiceGenerator;
+import cabinvoice.Ride;
 
 public class CabInvoiceTest {
 
@@ -16,8 +17,19 @@ public class CabInvoiceTest {
 
     @Test
     public void testMinimumFare() {
-        CabInvoiceGenerator cabInvoiceGEnerator = new CabInvoiceGenerator();
-        double fare = cabInvoiceGEnerator.calculateFare(0.2, 2);
+        CabInvoiceGenerator cabInvoiceGenerator = new CabInvoiceGenerator();
+        double fare = cabInvoiceGenerator.calculateFare(0.2, 2);
         assertEquals(5.0, fare);
+    }
+
+    @Test
+    public void testCalculateTotalFare() {
+        CabInvoiceGenerator cabInvoiceGenerator = new CabInvoiceGenerator();
+        Ride[] rides = {
+                new Ride(2.0, 5),
+                new Ride(1.0, 1)
+        };
+        double totalfare = cabInvoiceGenerator.calculateTotalFare(rides);
+        assertEquals(36.0, totalfare);
     }
 }
