@@ -32,4 +32,17 @@ public class CabInvoiceTest {
         double totalfare = cabInvoiceGenerator.calculateTotalFare(rides);
         assertEquals(36.0, totalfare);
     }
+
+    @Test
+    public void testCalculateAverageFare() {
+        CabInvoiceGenerator cabInvoiceGenerator = new CabInvoiceGenerator();
+        Ride[] rides = {
+                new Ride(2.0, 5),
+                new Ride(1.0, 1),
+                new Ride(1.0, 2),
+        };
+        double averageFare = cabInvoiceGenerator.calculateAverageFare(rides);
+        assertEquals(16.0, averageFare);
+    }
+
 }
